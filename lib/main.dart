@@ -16,7 +16,9 @@ class MyApp extends StatelessWidget {
         create: (context) {
           return Providerdata();
         },
-        child:
-            MaterialApp(debugShowCheckedModeBanner: false, home: Postscreen()));
+        child: MaterialApp(
+            theme: ThemeData(primaryColor: const Color.fromARGB(255, 1, 9, 16)),
+            debugShowCheckedModeBanner: false,
+            home: Postscreen()));
   }
 }

@@ -24,9 +24,7 @@ class _PostslistState extends State<Postslist> {
             child: Container(
               decoration: BoxDecoration(boxShadow: [
                 BoxShadow(
-                  color: Colors.grey.withOpacity(.3),
-
-                  blurRadius: 2, // The blur effect of the shadow
+                  color: const Color.fromARGB(255, 46, 53, 58).withOpacity(.3),
                   offset: Offset(0, 3),
                 )
               ], borderRadius: BorderRadius.circular(10)),
@@ -35,11 +33,14 @@ class _PostslistState extends State<Postslist> {
                     widget.postsmodel.title,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
+                    style: const TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.w700),
                   ),
                   subtitle: Text(
                     widget.postsmodel.body,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
+                    style: TextStyle(color: Colors.white),
                   ),
                   trailing: Provider.of<Providerdata>(context)
                       .Handlefav(widget.postsmodel.Id)),

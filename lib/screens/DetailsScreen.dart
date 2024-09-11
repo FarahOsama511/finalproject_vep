@@ -32,8 +32,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 6, 21, 32),
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: const Color.fromARGB(255, 6, 21, 32),
         centerTitle: true,
         title: const Text(
           "Details",
@@ -60,7 +61,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(
-                child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(
+                  color: Color.fromARGB(255, 46, 53, 58),
+                ),
               );
             } else if (snapshot.hasError) {
               return const Center(
@@ -84,11 +87,14 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         title: Text(
                           post.title,
                           style: const TextStyle(
-                              color: Colors.black,
+                              color: Colors.white,
                               fontSize: 15,
                               fontWeight: FontWeight.w700),
                         ),
-                        subtitle: Text(post.body),
+                        subtitle: Text(post.body,
+                            style: const TextStyle(
+                              color: Colors.white,
+                            )),
                       ),
                     ),
                     const Divider(),
@@ -96,33 +102,41 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       textAlign: TextAlign.start,
                       "Comments",
                       style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 25),
                     ),
                     Expanded(
                       child: ListView.separated(
                           separatorBuilder: (BuildContext context, int index) =>
-                              Divider(
-                                color: Colors.grey.shade200,
+                              const SizedBox(
+                                height: 5,
                               ),
                           itemCount: comment.length,
                           itemBuilder: (context, index) {
                             return Container(
-                              decoration: const BoxDecoration(
-                                  color: Colors.white,
-                                  boxShadow: [BoxShadow(color: Colors.grey)]),
-                              child: ListTile(
-                                title: Text(
-                                  comment[index].name,
-                                  style: const TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w700),
-                                ),
-                                subtitle: Text(comment[index].body),
-                              ),
-                            );
+                                decoration: BoxDecoration(boxShadow: [
+                                  BoxShadow(
+                                      color:
+                                          const Color.fromARGB(255, 46, 53, 58)
+                                              .withOpacity(.3),
+                                      offset: Offset(0, 3))
+                                ], borderRadius: BorderRadius.circular(10)),
+                                child: ListTile(
+                                  title: Text(
+                                    comment[index].name,
+                                    style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w700),
+                                  ),
+                                  subtitle: Text(
+                                    comment[index].body,
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ));
                           }),
                     )
                   ],

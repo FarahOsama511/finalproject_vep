@@ -23,8 +23,9 @@ class _PostscreenState extends State<Postscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 6, 21, 32),
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: const Color.fromARGB(255, 6, 21, 32),
         centerTitle: true,
         title: const Text(
           "Posts",
